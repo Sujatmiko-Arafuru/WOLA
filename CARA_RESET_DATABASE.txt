@@ -1,0 +1,110 @@
+================================================================================
+    CARA RESET DATABASE - SISTEM ANALISIS BEBAN KERJA PEGAWAI
+    Poltekkes Kemenkes Denpasar
+================================================================================
+
+📌 RINGKASAN
+------------
+Sistem ini sudah dilengkapi dengan command untuk menghapus semua data KECUALI
+admin dan mempersiapkan aplikasi untuk deployment baru (clean state).
+
+✓ ADMIN TETAP DIPERTAHANKAN - Tidak perlu login ulang!
+
+
+🚀 CARA MENGGUNAKAN (RECOMMENDED)
+----------------------------------
+
+Jalankan command ini di terminal:
+
+    php artisan db:reset-data
+
+atau langsung dengan membuat admin:
+
+    php artisan db:reset-data --create-admin
+
+
+📋 APA YANG AKAN DIHAPUS
+-------------------------
+✓ Semua akun PEGAWAI (employee)
+✓ Semua daftar tugas/tasks
+✓ Semua entri beban kerja pegawai  
+✓ Semua log edit
+✓ Semua notifikasi
+✓ Semua sessions & cache
+✓ Semua jobs & password reset tokens
+
+❌ YANG TIDAK DIHAPUS
+----------------------
+✓ Akun ADMIN tetap dipertahankan
+✓ Kredensial admin tetap sama
+✓ Tidak perlu login ulang
+
+
+👤 KREDENSIAL ADMIN
+-------------------
+Gunakan kredensial admin yang SUDAH ADA sebelumnya.
+Admin TIDAK dihapus saat reset.
+
+Jika belum ada admin, buat dengan:
+    php artisan db:seed --class=AdminOnlySeeder
+
+Kredensial admin default:
+    Email    : admin@poltekkes-denpasar.ac.id
+    Password : admin123
+    NIP      : ADMIN001
+
+
+📝 LANGKAH DEPLOYMENT LENGKAP
+------------------------------
+
+1. Persiapan Environment:
+   cp .env.example .env
+   php artisan key:generate
+
+2. Setup Database:
+   php artisan migrate
+   php artisan db:reset-data --create-admin
+
+3. Optimize:
+   php artisan storage:link
+   php artisan optimize:clear
+   php artisan config:cache
+   php artisan route:cache
+   php artisan view:cache
+
+4. Test Login:
+   - Buka: http://your-domain.com/login-admin
+   - Login dengan kredensial di atas
+   - Ubah password admin
+   - Mulai tambah pegawai
+
+
+⚠️  PERINGATAN
+--------------
+Command ini akan MENGHAPUS DATA PEGAWAI & TRANSAKSI secara PERMANEN!
+✓ Admin tetap aman (tidak dihapus)
+✓ Jangan gunakan jika masih ada data pegawai yang penting!
+
+
+📚 FILE YANG DIBUAT
+-------------------
+✓ database/seeders/ResetDatabaseSeeder.php      - Seeder untuk hapus data
+✓ database/seeders/AdminOnlySeeder.php          - Seeder untuk buat admin
+✓ app/Console/Commands/ResetDatabase.php        - Command artisan
+✓ RESET_DATABASE.md                             - Dokumentasi lengkap
+✓ CARA_RESET_DATABASE.txt                       - File ini
+
+
+🎯 SIAP DEPLOY!
+---------------
+Setelah menjalankan command di atas, aplikasi siap untuk:
+- Deployment production
+- Demo ke client
+- Testing dengan data bersih
+- Penggunaan sesungguhnya
+
+
+================================================================================
+Untuk dokumentasi lengkap, lihat file: RESET_DATABASE.md
+================================================================================
+

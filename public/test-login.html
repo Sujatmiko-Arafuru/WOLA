@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Login Buttons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background: #f0f8f8;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .test-btn {
+            background: linear-gradient(135deg, #1e5f5f, #2d8f8f);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 1rem;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        .test-btn:hover {
+            background: linear-gradient(135deg, #2d8f8f, #1e5f5f);
+            text-decoration: none;
+            color: white;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .form-group input:focus {
+            border-color: #2ecc71;
+            outline: none;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+        .debug {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Test Login Buttons</h1>
+        
+        <h2>Test Links:</h2>
+        <a href="/login-pegawai" class="test-btn">Login Pegawai</a>
+        <a href="/login-admin" class="test-btn">Login Admin</a>
+        <a href="/" class="test-btn">Home</a>
+        
+        <h2>Test Form Login Pegawai:</h2>
+        <form method="POST" action="/login-pegawai" id="testForm">
+            <div class="form-group">
+                <label for="nip">NIP:</label>
+                <input type="text" id="nip" name="nip" value="1234567890" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" value="password" required>
+            </div>
+            <button type="submit" class="submit-btn">Test Login Pegawai</button>
+        </form>
+        
+        <h2>Test Form Login Admin:</h2>
+        <form method="POST" action="/login-admin" id="testFormAdmin">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="admin@poltekkes-denpasar.ac.id" required>
+            </div>
+            <div class="form-group">
+                <label for="password_admin">Password:</label>
+                <input type="password" id="password_admin" name="password" value="admin123" required>
+            </div>
+            <button type="submit" class="submit-btn">Test Login Admin</button>
+        </form>
+        
+        <div class="debug" id="debug">
+            <strong>Debug Info:</strong><br>
+            <span id="debugText">Waiting for actions...</span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Test page loaded');
+            
+            // Test all links
+            const links = document.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    console.log('Link clicked:', this.href);
+                    document.getElementById('debugText').innerHTML += '<br>Link clicked: ' + this.href;
+                });
+            });
+            
+            // Test form submission
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    console.log('Form submitted:', this.action);
+                    document.getElementById('debugText').innerHTML += '<br>Form submitted: ' + this.action;
+                });
+            });
+            
+            // Test all buttons
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    console.log('Button clicked:', this.textContent.trim());
+                    document.getElementById('debugText').innerHTML += '<br>Button clicked: ' + this.textContent.trim();
+                });
+            });
+            
+            document.getElementById('debugText').innerHTML = 'Page loaded successfully. All event listeners attached.';
+        });
+    </script>
+</body>
+</html>

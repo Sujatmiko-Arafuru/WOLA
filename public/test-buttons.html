@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Buttons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background: #f0f8f8;
+        }
+        .test-btn {
+            background: linear-gradient(135deg, #00d084, #2ecc71);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 1rem;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .test-btn:hover {
+            background: linear-gradient(135deg, #2ecc71, #00d084);
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Tombol Landing Page</h1>
+    
+    <h2>Test Link ke Login Pegawai:</h2>
+    <a href="/login-pegawai" class="test-btn">Login Pegawai</a>
+    
+    <h2>Test Link ke Login Admin:</h2>
+    <a href="/login-admin" class="test-btn">Login Admin</a>
+    
+    <h2>Test Link ke Home:</h2>
+    <a href="/" class="test-btn">Home</a>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Test page loaded');
+            
+            const links = document.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    console.log('Link clicked:', this.href);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
