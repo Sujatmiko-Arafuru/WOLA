@@ -76,8 +76,8 @@ Sistem menggunakan konversi waktu yang telah ditetapkan:
 ### 👥 Akun Default
 
 #### Admin:
-- **Email**: admin@poltekkes-denpasar.ac.id
-- **Password**: admin123
+- **Email**: tanya Angelio Asa
+- **Password**: Tanya Angelio ASA
 
 #### Pegawai Sample:
 - **NIP**: 196501011990032001
